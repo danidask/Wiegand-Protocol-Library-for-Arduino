@@ -12,24 +12,29 @@ class WIEGAND {
 public:
 	WIEGAND();
 	void begin();
-	void begin(int pinD0, int pinD1);
 	void begin(int pinD0, int pinIntD0, int pinD1, int pinIntD1);
 	bool available();
 	unsigned long getCode();
-	int getWiegandType();
-	
+	// char* getCodigoBinario();
+	char* getHexCode();
+	int getCardReaderId();
+
+
 private:
 	static void ReadD0();
 	static void ReadD1();
+	static void BitReceive(bool bitrec);
 	static bool DoWiegandConversion ();
-	static unsigned long GetCardId (volatile unsigned long *codehigh, volatile unsigned long *codelow, char bitlength);
-	
-	static volatile unsigned long 	_cardTempHigh;
-	static volatile unsigned long 	_cardTemp;
+	static void extracthex ();
+
 	static volatile unsigned long 	_lastWiegand;
-	static volatile int				_bitCount;	
-	static int				_wiegandType;
-	static unsigned long	_code;
+	static volatile int				_bitCount;
+	static volatile int				_bitinbyte;
+	static volatile int				_byteindex;
+	static volatile int				_readerid;
+	// static char _bites[200]; // BORRAR
+	static unsigned char _bytes[30];
+	static char _hexmsg[60];
 };
 
 #endif

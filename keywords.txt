@@ -12,8 +12,8 @@ WIEGAND	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-getCode	KEYWORD2
-getWiegandType	KEYWORD2
+getHexCode	KEYWORD2
+getCardReaderId	KEYWORD2
 available	KEYWORD2
 
 #######################################
